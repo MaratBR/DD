@@ -9,7 +9,7 @@ namespace DeclarativeDiagram.DataModel
 {
     public abstract class Function : Value, IFunction
     {
-        public string Name { get; private set; }
+        public string Name { get; protected set; }
 
         public override ValueType GetExprType(Context context)
             => ValueType.Function;
@@ -17,9 +17,14 @@ namespace DeclarativeDiagram.DataModel
         public ArgumentsDefinition Arguments { get; protected set; }   
         public abstract double CalculateValue(Context context, FunctionArguments args);
 
+        public string ToMathString()
+        {
+            return $"{Name}{Arguments}";
+        }
+
         public override string ToString()
         {
-            return $"{GetType().Name}({Arguments})";
+            return $"{GetType().Name}({Name}{Arguments})";
         }
     }
 }

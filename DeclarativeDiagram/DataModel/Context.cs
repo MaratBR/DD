@@ -9,7 +9,7 @@ namespace DeclarativeDiagram.DataModel
     public class Context
     {
         private Context Inner;
-        private Dictionary<string, Value> Values = new Dictionary<string, Value>();
+        public Dictionary<string, Value> Values { get; private set; } = new Dictionary<string, Value>();
 
         public Context()
         {

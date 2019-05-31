@@ -11,8 +11,9 @@ namespace DeclarativeDiagram.DataModel
     {
         public Numeric Expression { get; private set; }
 
-        public DefinedFunction(Numeric expr, ArgumentsDefinition def)
+        public DefinedFunction(string name, Numeric expr, ArgumentsDefinition def)
         {
+            Name = name;
             Expression = expr;
             Arguments = def;
         }

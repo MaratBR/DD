@@ -23,13 +23,16 @@ namespace DeclarativeDiagram.Syntax
 
         public override void Execute(Context context)
         {
-            context[Name] = new DefinedFunction(Expression, Arguments);
+            if (IsFunction)
+                context[Name] = new DefinedFunction(Name, Expression, Arguments);
+            else
+                context[Name] = Expression;
         }
 
         public override string ToString()
         {
             string argsStr = IsFunction ? $"({string.Join(", ", Arguments.Names)})" : string.Empty;
-            return $"{GetType().FullName} = {Expression})";
+            return $"{GetType().FullName}({Name}{argsStr} = {Expression})";
         }
     }
 }
